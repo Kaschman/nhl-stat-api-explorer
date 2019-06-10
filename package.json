@@ -2,5 +2,16 @@
   "name": "nhl-stat-api-explorer",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "flow-remove-types ./src/ -d ./lib/ --all --pretty",
+    "flow": "flow check ./src/",
+    "flow:deps": "flow-typed install"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.100.0",
+    "flow-remove-types": "^2.100.0",
+    "flow-typed": "^2.5.2"
+  },
+  "dependencies": {}
 }
