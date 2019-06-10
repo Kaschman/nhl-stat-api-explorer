@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "build": "flow-remove-types ./src/ -d ./lib/ --all --pretty",
-    "seed:db": "node -r esm lib/seed.js",
+    "seed:db": "yarn flow && yarn build && node -r esm lib/seed.js",
     "flow": "flow check ./src/",
-    "flow:deps": "flow-typed install"
+    "flow:deps": "flow-typed install",
+    "migrate": "knex migrate:latest"
   },
   "devDependencies": {
     "flow-bin": "^0.100.0",
@@ -16,6 +17,8 @@
   },
   "dependencies": {
     "esm": "^3.2.25",
+    "knex": "^0.17.5",
+    "pg": "^7.11.0",
     "superagent": "^5.0.6"
   }
 }
