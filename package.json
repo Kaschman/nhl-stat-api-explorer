@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "flow-remove-types ./src/ -d ./lib/ --all --pretty",
+    "seed:db": "node -r esm lib/seed.js",
     "flow": "flow check ./src/",
     "flow:deps": "flow-typed install"
   },
@@ -13,5 +14,8 @@
     "flow-remove-types": "^2.100.0",
     "flow-typed": "^2.5.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "esm": "^3.2.25",
+    "superagent": "^5.0.6"
+  }
 }
