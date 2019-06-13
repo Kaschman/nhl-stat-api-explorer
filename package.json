@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "flow-remove-types ./src/ -d ./lib/ --all --pretty",
-    "seed:db": "yarn flow && yarn build && node -r esm lib/seed.js",
+    "seed:teams": "yarn flow && yarn build && node -r esm lib/seedTeams.js",
+    "seed:games": "yarn flow && yarn build && node -r esm lib/seedGames.js",
     "flow": "flow check ./src/",
     "flow:deps": "flow-typed install",
     "migrate": "knex migrate:latest"
@@ -16,9 +17,11 @@
     "flow-typed": "^2.5.2"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "esm": "^3.2.25",
     "knex": "^0.17.5",
     "pg": "^7.11.0",
-    "superagent": "^5.0.6"
+    "superagent": "^5.0.6",
+    "yargs": "^13.2.4"
   }
 }

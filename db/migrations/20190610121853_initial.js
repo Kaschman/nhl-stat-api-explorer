@@ -1,14 +1,13 @@
-// Creates Team table
+// Creates Teams table
 
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('teams', function(table) {
-      table.string('id').primary()
+      table.integer('id').unsigned().primary()
       table.string('name')
       table.string('abbreviation')
       table.string('location_name')
       table.string('team_name')
-      table.timestamps(true, true)
     })
   ])
 }

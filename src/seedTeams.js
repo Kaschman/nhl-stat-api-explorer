@@ -1,10 +1,11 @@
 import superagent from 'superagent'
-import { database } from './config'
+import { baseUrl, database } from './config'
 
 import type { Team } from './models/team'
 import { serialize, toSQL } from './models/team'
 
-superagent.get('https://statsapi.web.nhl.com/api/v1/teams')
+const teamsUrl = baseUrl + '/teams'
+superagent.get(teamsUrl)
 .end(async (error, response) => {
   if (error) {
     console.log('Error Occured')
@@ -13,17 +14,13 @@ superagent.get('https://statsapi.web.nhl.com/api/v1/teams')
     await database('teams').del()
     const teams: Team[] = response.body.teams.map(team => serialize(team))
 
-    const temp = teams.map(team => toSQL(team))
-    await database('teams').insert(temp)
+    const teamsSql = teams.map(team => toSQL(team))
+    await database('teams').insert(teamsSql)
+
+    console.log('--------------------')
+    console.log('Saved ' + teamsSql.length + ' teams')
+    console.log('--------------------')
 
     process.exit()
   }
 })
-
-const deleteTeams = async () => {
-  return
-}
-
-const saveTeams = async (teams: Team[]) => {
-
-}
