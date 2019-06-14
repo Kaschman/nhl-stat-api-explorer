@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
         table.foreign('home_team').references('teams.id')
         table.string('link')
         table.string('type')
+        table.string('season')
       })
     ])
 };

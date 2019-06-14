@@ -11,7 +11,7 @@ import { serialize, toSQL } from './models/game'
 const args = yargs.argv
 // A team ID must be passed to the method as a --team parameter
 if (!args.team) {
-  console.error(chalk.red('ERROR: Must include a -t parameter'))
+  console.error(chalk.red('ERROR: Must include a --team parameter'))
   process.exit()
 }
 const teamId = args.team

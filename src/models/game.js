@@ -6,6 +6,7 @@ type Game = {
   homeScore: number,
   homeTeam: string,
   link: string,
+  season: string,
   type: string,
 }
 
@@ -20,6 +21,7 @@ export const serialize = (json: any): Game => {
     homeScore: json.teams.home.score,
     homeTeam: json.teams.home.team.id,
     link: json.link,
+    season: json.season,
     type: json.gameType,
   }
   return game
@@ -34,6 +36,7 @@ export const toSQL = (game: Game): any => {
     home_score: game.homeScore,
     home_team: game.homeTeam,
     link: game.link,
+    season: game.season,
     type: game.type
   }
 }
