@@ -7,6 +7,7 @@
     "build": "flow-remove-types ./src/ -d ./lib/ --all --pretty",
     "seed:teams": "yarn flow && yarn build && node -r esm lib/seedTeams.js",
     "seed:games": "yarn flow && yarn build && node -r esm lib/seedGames.js",
+    "seed:stats": "yarn flow && yarn build && node -r esm lib/processGameStats.js",
     "flow": "flow check ./src/",
     "flow:deps": "flow-typed install",
     "migrate": "knex migrate:latest"
